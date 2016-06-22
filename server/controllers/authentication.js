@@ -120,4 +120,3 @@ exports.fitbitHandler = (req, res, next) => {
     console.log(err);
   });
 };
-
