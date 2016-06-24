@@ -36,7 +36,8 @@
     "react-router": "^2.4.1",
     "redux": "^3.5.2",
     "redux-form": "^5.2.5",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "socket.io": "^1.4.6"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
@@ -65,6 +66,7 @@
     "postcss-loader": "^0.9.1",
     "redux-immutable-state-invariant": "^1.2.3",
     "sinon": "^1.17.3",
+    "socket.io-client": "^1.4.6",
     "uglify-js": "^2.6.2",
     "webpack": "^1.13.1",
     "webpack-browser-plugin": "^1.0.6",
