@@ -37,8 +37,6 @@ module.exports = rep => {
       rep.oneOrNone(sql.findById, id, user =>
         user),
     findByEmail: email => {
-      console.log('()()()()()())(');
-      console.log(email);
       return rep.oneOrNone(sql.findByEmail, email, user =>
         user)},
 

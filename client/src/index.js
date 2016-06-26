@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import createSocketIoMiddleware from 'redux-socket.io';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import reduxThunk from 'redux-thunk';
 
@@ -16,15 +17,12 @@ import LandingPage from './components/LandingPage/LandingPage';
 import Meter from './components/Meter/Meter';
 import reducers from './helpers/rootReducer/rootReducer';
 import { AUTH_USER } from './helpers/constants/types';
-import startChat from './Chat/message';
 
 import './index.css';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
-const store = createStoreWithMiddleware(reducers);
-
-//start socket chat
-startChat(store);
+const store = createStoreWithMiddleware(reducers, 
+  window.devToolsExtension && window.devToolsExtension());
 
 const token = localStorage.getItem('token');
 // If we have a token then consider user to be signed in

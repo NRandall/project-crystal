@@ -5,7 +5,7 @@ import './meter.css';
 
 class Meter extends Component {
   componentWillMount() {
-    this.props.getHealth(this.props.user.coupleID);
+    this.props.getHealth(4); //changed this.props.user.coupleID
   }
 
   renderStats() {

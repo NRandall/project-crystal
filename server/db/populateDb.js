@@ -16,7 +16,10 @@ const populateDb = () => {
     .catch(err => console.log(err))
     .then(db.questions.create)
     .then(db.questions.init)
-    .then(() => console.log("DB successfully populated with questions: "))
+    .then(() => console.log("DB successfully populated with questions"))
+    .catch(err => console.log(err))
+    .then(db.messages.create)
+    .then(() => console.log("DB messages table created"))
     .catch(err => console.log(err));
 };
 

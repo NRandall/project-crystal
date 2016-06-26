@@ -9,6 +9,7 @@ const repos = {
     questions: require('./repos/questions'),
     couples: require('./repos/couples'),
     couples_users: require('./repos/couples_users'),
+    messages: require('./repos/messages')
 };
 
 // pg-promise initialization options:
@@ -23,6 +24,7 @@ const options = {
         obj.questions = repos.questions(obj);
         obj.couples = repos.couples(obj); 
         obj.couples_users = repos.couples_users(obj); 
+        obj.messages = repos.messages(obj);
     }
 
 };
@@ -33,12 +35,19 @@ const options = {
   // database: 'blossomly',
   // user: 'postgres',
 const config = {
-  host: 'ec2-50-112-35-113.us-west-2.compute.amazonaws.com',
+  host: 'localhost',
   port: 5432,
   database: 'blossomly',
-  user: 'other_user',
-  password: 'hottub',
+  user: 'Roger',
 };
+
+// const config = {
+//   host: 'ec2-50-112-35-113.us-west-2.compute.amazonaws.com',
+//   port: 5432,
+//   database: 'blossomly',
+//   user: 'other_user',
+//   password: 'hottub',
+// };
 
 // Load and initialize pg-promise:
 var pgp = require('pg-promise')(options);

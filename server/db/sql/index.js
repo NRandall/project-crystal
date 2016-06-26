@@ -57,5 +57,10 @@ module.exports = {
         all: sql('questions/all.sql'),
         findByFrequency: sql('questions/findByFrequency.sql'),
         remove: sql('questions/remove.sql')
-    }
+    },
+    messages: {
+        create: sql('messages/create.sql'),
+        add: sql('messages/add.sql'),
+        findByCoupleId: sql('messages/findByCoupleId.sql'),
+    },
 };

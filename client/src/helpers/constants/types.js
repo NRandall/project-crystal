@@ -5,3 +5,6 @@ export const FETCH_MESSAGE = 'FETCH_MESSAGE';
 export const MARK_ANSWERED = 'MARK_ANSWERED';
 export const FETCH_QUESTIONS = 'FETCH_QUESTIONS';
 export const FETCH_HEALTH = 'FETCH_HEALTH';
+export const UPDATE_MESSAGE = 'UPDATE_MESSAGE';
+export const ADD_MESSAGE = 'ADD_MESSAGE';
+export const GET_MESSAGES = 'GET_MESSAGES';
