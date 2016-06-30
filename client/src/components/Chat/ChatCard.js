@@ -34,7 +34,7 @@ class ChatCard extends Component {
 
   // gets all messages for this couple when page loads
   componentWillMount() {
-    socket = io.connect();
+    if (!socket) socket = io.connect();
   }
 
   componentDidMount() {

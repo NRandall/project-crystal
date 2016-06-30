@@ -2,39 +2,23 @@ const path = require('path');
 const webpack = require('webpack');
 const precss = require('precss');
 const autoprefixer = require('autoprefixer');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const config = {
 
-  devtool: 'cheap-module-source-map',
   entry: [
-    'webpack-hot-middleware/client',
     './client/src/index',
   ],
   output: {
     path: path.join(__dirname, '/client/build/'),
-    sourceMapFilename: 'bundle.map',
     filename: 'bundle.js',
     publicPath: '/',
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-    }),
-    new BrowserSyncPlugin({
-      // browse to http://localhost:3000/ during development,
-      // ./client/build/ directory is being served
-      host: 'localhost',
-      port: 3030,
-      // uncomment to use this instead of express/node server
-      // server: { baseDir: ['client/build'] }
-      files: [
-        'client/build/*.js',
-      ],
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
     }),
     new CopyWebpackPlugin(
       [
@@ -55,22 +39,6 @@ const config = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
-        query: {
-          plugins: [
-            ['react-transform', {
-              transforms: [
-                {
-                  transform: 'react-transform-hmr',
-                  imports: ['react'],
-                  locals: ['module'],
-                }, {
-                  transform: 'react-transform-catch-errors',
-                  imports: ['react', 'redbox-react'],
-                },
-              ],
-            }],
-          ],
-        },
       },
       { test: /\.css$/, loader: 'style-loader!css-loader!postcss-loader' },
       { test: /\.png$/, loader: 'url-loader?limit=100000' },
@@ -91,6 +59,7 @@ const config = {
 };
 
 if (process.env.NODE_ENV === 'production') {
+  console.log('node in production mode');
   config.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
       compressor: {

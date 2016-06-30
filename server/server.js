@@ -1,28 +1,20 @@
+process.env.NODE_ENV = 'production';
 const express = require('express');
 const bodyParser = require('body-parser');
-const db = require(__dirname + '/db/index').db;
 
 const app = express();
-const http = require('http').Server(app);
 const socketServer = require('./socket');
-const React = require('react');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 9000;
 
 app.use(express.static(`${__dirname}/../client/build`));
 app.use(bodyParser.json());
 
 const path = require('path');
-const webpack = require('webpack');
-const config = require('../webpack.config');
-const compiler = webpack(config);
 const router = require('./router');
 const cors = require('cors');
-const webpackHotMiddleware = require('webpack-hot-middleware');
-const webpackDevMiddleware = require('webpack-dev-middleware');
 
 // populate postgresql db | Not needed once initial database has been populated
 // require('./db/populateDb')();
-
 const userAPIroutes = require('./routes/api/user');
 const coupleAPIroutes = require('./routes/api/couple');
 const questionAPIroutes = require('./routes/api/questions');
@@ -73,19 +65,12 @@ router(app);
 
 module.exports = app;
 
-if (app.get('env') === 'development') {
-  app.use(webpackDevMiddleware(compiler, {
-    noInfo: true,
-    publicPath: config.output.publicPath,
-  }));
-  app.use(webpackHotMiddleware(compiler));
-}
 app.use('/', express.static(path.resolve(__dirname, '../client/build')));
 
 // Cors is a middleware that will handle CORS in the browser
 app.use(cors());
 // Middleware that parses incoming requests into JSON no matter the type of request
-app.use(bodyParser.json({ type: '*/*' }));
+// app.use(bodyParser.json({ type: '*/*' }));
 router(app);
 
 const webServer = app.listen(port, () => console.log(`Server started at: http://localhost:${port}`));
