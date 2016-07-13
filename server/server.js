@@ -54,13 +54,13 @@ router(app);
 
 module.exports = app;
 
-if (app.get('env') === 'development') {
-  app.use(webpackDevMiddleware(compiler, {
-    noInfo: true,
-    publicPath: config.output.publicPath,
-  }));
-  app.use(webpackHotMiddleware(compiler));
-}
+// if (app.get('env') === 'development') {
+//   app.use(webpackDevMiddleware(compiler, {
+//     noInfo: true,
+//     publicPath: config.output.publicPath,
+//   }));
+//   app.use(webpackHotMiddleware(compiler));
+// }
 
 app.use('/', express.static(path.resolve(__dirname, '../client/build')));
 app.post('/verify', (req, res, next) => {

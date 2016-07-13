@@ -33,21 +33,21 @@ const options = {
 
 //Database connection parameters:
 
-// const config = {
-//   host: process.env.DB_HOST,
-//   port: process.env.DB_PORT,
-//   database: process.env.DB_NAME,
-//   user: process.env.DB_USER,
-//   password: process.env.DB_PASSWORD,
-// };
-
 const config = {
-  host: 'localhost',
-  port: 5432,
-  database: 'blossomly',
-  // user: 'Roger',
-  user: 'postgres',
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
 };
+
+// const config = {
+//   host: 'localhost',
+//   port: 5432,
+//   database: 'blossomly',
+//   // user: 'Roger',
+//   user: 'postgres',
+// };
 
 // Load and initialize pg-promise:
 const pgp = require('pg-promise')(options);

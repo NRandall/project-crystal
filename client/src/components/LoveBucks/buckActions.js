@@ -2,16 +2,20 @@ import axios from 'axios';
 import { ADD_TRANSACTION, CHANGE_POINTS, GET_LOVEBUCK_INFO, } from '../../helpers/constants/types';
 
 export const givePoints = (giftInfo) => {
-  if (giftInfo.type === 1) giftInfo.points = -Math.abs(giftInfo.points);
-  return dispatch => {
-    axios.post('/api/v1/lovebucks', giftInfo)
-      .then(response => {
-        dispatch({
-          type: ADD_TRANSACTION,
-          payload: response.data.updated.love_bucks,
+  if (giftInfo.type === 1) {
+    // giftInfo.points = -Math.abs(giftInfo.points);
+    return dispatch => {
+      axios.post('/api/v1/lovebucks', giftInfo)
+        .then(response => {
+          dispatch({
+            type: ADD_TRANSACTION,
+            payload: response.data.updated.love_bucks,
+          });
         });
-      });
-  };
+    };
+  } else {
+    axios.post('/api/v1/lovebucks', giftInfo);
+  }
 };
 
 export const getLovebuckInfo = (coupleID) => {
