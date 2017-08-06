@@ -6,8 +6,15 @@ const autoprefixer = require('autoprefixer');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
-const config = {
+const reactDomLibPath = path.join(__dirname, "./node_modules/react-dom/lib");
+const alias = {};
+["EventPluginHub", "EventConstants", "EventPluginUtils", "EventPropagators",
+ "SyntheticUIEvent", "CSSPropertyOperations", "ViewportMetrics"].forEach(function(filename){
+   alias[ "react/lib/" + filename] = path.join(__dirname, "./node_modules/react-dom/lib", filename);
+ });
 
+const config = {
+  resolve: { alias },
   devtool: 'cheap-module-source-map', // this
   entry: [
     // 'webpack-hot-middleware/client',  // this
