@@ -6,7 +6,7 @@ azure.err
 iisnode.yml
 
 # Build files
-client/build
+# client/build
 
 # env variables
 .env
