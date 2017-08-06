@@ -1,5 +1,4 @@
 const omit = require('lodash/omit');
-const clc = require('cli-color');
 const bcrypt = require('bcrypt-nodejs');
 const Promise = require('bluebird');
 const each = require('lodash/each');
@@ -22,7 +21,7 @@ exports.desensitize = (recordOrRecords) => {
 // lines for clarity.
 exports.customLog = (input) => {
   console.log('-------------------- Roger\'s Custom Log ---------------------');
-  console.log(clc.white.bgBlack.underline(input));
+  console.log(input);
   console.log('---------------------- End of Log ----------------------------');
 };
 

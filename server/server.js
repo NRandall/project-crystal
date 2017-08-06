@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ silent: process.env.NODE_ENV === 'production' });
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require(__dirname + '/db/index').db;
@@ -20,13 +20,13 @@ app.use(express.static(`${__dirname}/../client/build`));
 app.use(bodyParser.json());
 
 const path = require('path');
-const webpack = require('webpack');
-const config = require('../webpack.config');
-const compiler = webpack(config);
+// const webpack = require('webpack');
+// const config = require('../webpack.config');
+// const compiler = webpack(config);
 const router = require('./router');
 const cors = require('cors');
-const webpackHotMiddleware = require('webpack-hot-middleware');
-const webpackDevMiddleware = require('webpack-dev-middleware');
+// const webpackHotMiddleware = require('webpack-hot-middleware');
+// const webpackDevMiddleware = require('webpack-dev-middleware');
 
 // populate postgresql db | Not needed once initial database has been populated
 // require('./db/populateDb')();

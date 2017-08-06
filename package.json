@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --display-error-details -w",
     "clean": "rimraf client/build",
-    "start": "npm run clean && concurrently \"npm run build\" \"nodemon server/server.js\"",
+    "start": "node server/server.js",
+    "dev": "npm run clean && concurrently \"npm run build\" \"nodemon server/server.js\"",
     "generate-docs": "node_modules/.bin/jsdoc -c jsdoc.json",
     "test": "mocha --compilers js:babel-core/register --require ./client/src/tests/testHelper.js --recursive ./client/src/tests/",
     "test:watch": "npm run test -- --watch",
@@ -68,7 +69,6 @@
     "browser-sync-webpack-plugin": "^1.0.3",
     "chai": "^3.5.0",
     "chai-jquery": "^2.0.0",
-    "cli-color": "1.1.0",
     "compression-webpack-plugin": "^0.3.1",
     "concurrently": "^2.1.0",
     "copy-webpack-plugin": "3.0.0",

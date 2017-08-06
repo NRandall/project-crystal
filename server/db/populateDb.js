@@ -14,7 +14,7 @@ const populateDb = () => {
     .then(db.lovebucks.create)
     // .then(db.todos.init)
     // .then(db.events.init)
-    .catch(err => console.log(err))
+    .catch(err => console.log('There was an error populating the db - ', err))
     // .then(db.questions_categories.create)  // new
     // .then(db.questions_categories.init)   // new
     .then(result => console.log('Db successfully restarted!'))
